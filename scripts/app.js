@@ -9,12 +9,30 @@ let city = document.getElementById("city")
 let state = document.getElementById('state')
 
 
-let day1 = document.getElementById("day1")
-let day2 = document.getElementById('day2')
-let day3 = document.getElementById('day3')
-let day4 = document.getElementById('day4')
-let day5 = document.getElementById('day5')
+let dayName1 = document.getElementById("dayName1")
+let weatherIcon1 = document.getElementById('weatherIcon1')
+let Day1Max = document.getElementById('Day1Max')
+let Day1Min = document.getElementById('Day1Min')
 
+let dayName2 = document.getElementById("dayName2")
+let weatherIcon2 = document.getElementById('weatherIcon2')
+let Day2Max = document.getElementById('Day2Max')
+let Day2Min = document.getElementById('Day2Min')
+
+let dayName3 = document.getElementById("dayName3")
+let weatherIcon3 = document.getElementById('weatherIcon3')
+let Day3Max = document.getElementById('Day3Max')
+let Day3Min = document.getElementById('Day3Min')
+
+let dayName4 = document.getElementById("dayName4")
+let weatherIcon4 = document.getElementById('weatherIcon4')
+let Day4Max = document.getElementById('Day4Max')
+let Day4Min = document.getElementById('Day4Min')
+
+let dayName5 = document.getElementById("dayName5")
+let weatherIcon5 = document.getElementById('weatherIcon5')
+let Day5Max = document.getElementById('Day5Max')
+let Day5Min = document.getElementById('Day5Min')
 
 navigator.geolocation.getCurrentPosition(succes, errorFunc)
 let latFunc;
@@ -98,8 +116,6 @@ function daysDigit(dayOfWeek) {
 }
 }
 
-
-
 function ApiCall5DaysForcast(lat, lon) {
 
     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`)
@@ -119,13 +135,12 @@ function ApiCall5DaysForcast(lat, lon) {
                 if ((data.list[i].dt_txt[9]) == dd + 1) {
                     // console.log(data.list[i].main.temp_max)
                     if (data.list[i].main.temp_max > maxTempDay1) { 
-                    maxTempDay1 = data.list[i].main.temp_max;
-                    // console.log(i)
+                        maxTempDay1 = data.list[i].main.temp_max;
                 }
                 }
             }           
             console.log("Max temp for " + (daysDigit(dayOfWeek + 1)) + " is " + (Math.round((maxTempDay1 - 273.15) * (9 / 5) + 32)))
-
+            Day1Max.textContent = (Math.round((maxTempDay1 - 273.15) * (9 / 5) + 32));
             let minTempDay1 = 500;    
             for (let i = 0; i < 11; i++) {
             // minTempDay1= data.list[i].main.temp_min ; 
@@ -138,6 +153,7 @@ function ApiCall5DaysForcast(lat, lon) {
                 }
             }           
             console.log("Min temp for " + (daysDigit(dayOfWeek + 1)) + " is " + (Math.round((minTempDay1 - 273.15) * (9 / 5) + 32)))
+            Day1Min.textContent = (Math.round((minTempDay1 - 273.15) * (9 / 5) + 32));
 
 
 
@@ -263,8 +279,8 @@ main2.textContent = daysDigit(dayOfWeek)
 main12.textContent = daysDigit(dayOfWeek )
 main22.textContent = daysDigit(dayOfWeek )
 
-day1.textContent = daysDigit(dayOfWeek + 1)
-day2.textContent = daysDigit(dayOfWeek + 2)
+dayName1.textContent = daysDigit(dayOfWeek + 1)
+dayName2.textContent = daysDigit(dayOfWeek + 2)
 day3.textContent = daysDigit(dayOfWeek + 3)
 day4.textContent = daysDigit(dayOfWeek + 4)
 day5.textContent = daysDigit(dayOfWeek + 5)
