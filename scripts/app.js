@@ -295,7 +295,37 @@ function ApiCall5DaysForcast(lat, lon) {
 
 
 
-const dateArray = 
+// const today = new Date();
+
+
+const upcomingDate1 = new Date(today);
+upcomingDate1.setDate(today.getDate() + 1);
+
+const upcomingDate2 = new Date(today);
+upcomingDate2.setDate(today.getDate() + 2);
+
+const upcomingDate3 = new Date(today);
+upcomingDate3.setDate(today.getDate() + 3);
+
+const upcomingDate4 = new Date(today);
+upcomingDate4.setDate(today.getDate() + 4);
+
+const upcomingDate5 = new Date(today);
+upcomingDate5.setDate(today.getDate() + 5);
+
+console.log("Today's date:", today.toISOString().slice(0, 10));
+console.log("Upcoming date 1:", upcomingDate1.toISOString().slice(0, 10));
+console.log("Upcoming date 2:", upcomingDate2.toISOString().slice(0, 10));
+console.log("Upcoming date 3:", upcomingDate3.toISOString().slice(0, 10));
+console.log("Upcoming date 4:", upcomingDate4.toISOString().slice(0, 10));
+console.log("Upcoming date 5:", upcomingDate5.toISOString().slice(0, 10));
+
+
+const upcomingDate = new Date(today);
+upcomingDate.setDate(today.getDate() + 29);
+
+console.log("Today's date:", today.toISOString().slice(0, 10));
+console.log("Upcoming date in 29 days:", upcomingDate.toISOString().slice(0, 10));
 
 
 function ApiCall5DaysForcast2(lat, lon) {
@@ -306,25 +336,22 @@ function ApiCall5DaysForcast2(lat, lon) {
             return response.json()
         })
         .then((data) => {
-            console.log(data)
-            // console.log(data.list[0].main.temp_max)
-            console.log(data.list[0].dt_txt.substring(8, 10))
-            console.log(`${dd}`);
-            main1.textContent = (daysDigit(dayOfWeek))
+            // console.log(data)
+            // // console.log(data.list[0].main.temp_max)
+            // console.log(data.list[0].dt_txt.substring(8, 10))
+            // console.log(`${dd}`);
+            // main1.textContent = (daysDigit(dayOfWeek))
 
-            if ((data.list[i].dt_txt.substring(8, 10)) == dd + 5) {
-                // console.log(data.list[i].main.temp_max)
-                if (data.list[i].main.temp_max > maxTempDay5) {
-                    maxTempDay5 = data.list[i].main.temp_max;
-                    console.log(dd)
-                }
+            for (let i = 0; i < data.list.length; i++){
+                console.log(data.list.length + " this is how many list items we have")
             }
+            
 
 
 
         })
     }
-    // ApiCall5DaysForcast2();
+    ApiCall5DaysForcast2();
 
 
 
