@@ -67,9 +67,9 @@ function ApiCall(lat, lon) {
             // tempDgr.textContent = dgrFarenheit;
             console.log(dgrFarenheit)
             main12.textContent = dgrFarenheit
-               main2.textContent = ("MAX today " + (Math.round(((data.main.temp_max) - 273.15) * 9 / 5 + 32)) + "");
-            main22.textContent =  (" MIN today" + (Math.round(((data.main.temp_min) - 273.15) * 9 / 5 + 32)) + "");
-            
+            main2.textContent = ("MAX today " + (Math.round(((data.main.temp_max) - 273.15) * 9 / 5 + 32)) + "");
+            main22.textContent = (" MIN today" + (Math.round(((data.main.temp_min) - 273.15) * 9 / 5 + 32)) + "");
+
             console.log(" MAX  today = " + (Math.round(((data.main.temp_max) - 273.15) * 9 / 5 + 32)) + "");
             console.log(" MIN today  = " + (Math.round(((data.main.temp_min) - 273.15) * 9 / 5 + 32)) + " ");
             // ("The MAX temp in here is = " +  (Math.round(((data.main.temp_min) - 273.15) * 9 / 5 + 32)) + " degree fahrenheit!");
@@ -87,33 +87,39 @@ console.log(today.toLocaleDateString('en-US'));
 let dayOfWeek1;
 const dd = today.getDate();
 const dayOfWeek = today.getDay();
-
+console.log(dayOfWeek)
 function daysDigit(dayOfWeek) {
     switch (dayOfWeek) {
-    case 0:
-        return "Sunday";
-        break;
-    case 1:
-        return "Monday";
-        // console.log(dayOfWeek1);
-        break;
-    case 2:
-       return "Teusday";
-        // console.log('Monday');
-        break;
-    case 3:
-        return "Wednesday";
-        break;
-    case 4:
-        return"Thursday";
-        break;
-    case 5:
-        return "Friday";
-        break;
-    case 6:
-        return "Saturday";
-        break;
-}
+        case 0:
+            return "Sunday";
+            break;
+        case 1:
+            return "Monday";
+            // console.log(dayOfWeek1);
+            break;
+        case 2:
+            return "Teusday";
+            // console.log('Monday');
+            break;
+        case 3:
+            return "Wednesday";
+            break;
+        case 4:
+            return "Thursday";
+            break;
+        case 5:
+            return "Friday";
+            break;
+        case 6:
+            return "Saturday";
+            break;
+        case 6:
+            return "Saturday";
+            break;
+        case 6:
+            return "Saturday";
+            break;
+    }
 }
 
 function ApiCall5DaysForcast(lat, lon) {
@@ -126,165 +132,215 @@ function ApiCall5DaysForcast(lat, lon) {
         .then((data) => {
             console.log(data)
             // console.log(data.list[0].main.temp_max)
-            console.log(data.list[0].dt_txt[9])
+            console.log(data.list[0].dt_txt.substring(8, 10))
             console.log(`${dd}`);
             main1.textContent = (daysDigit(dayOfWeek))
-     
-            let maxTempDay1= 0;           
+
+            let maxTempDay1 = 0;
             for (let i = 0; i < 11; i++) {
-                if ((data.list[i].dt_txt[9]) == dd + 1) {
+                if ((data.list[i].dt_txt.substring(8, 10)) == dd + 1) {
                     // console.log(data.list[i].main.temp_max)
-                    if (data.list[i].main.temp_max > maxTempDay1) { 
+                    if (data.list[i].main.temp_max > maxTempDay1) {
                         maxTempDay1 = data.list[i].main.temp_max;
+                    }
                 }
-                }
-            }           
+            }
             console.log("Max temp for " + (daysDigit(dayOfWeek + 1)) + " is " + (Math.round((maxTempDay1 - 273.15) * (9 / 5) + 32)))
             Day1Max.textContent = (Math.round((maxTempDay1 - 273.15) * (9 / 5) + 32));
-            let minTempDay1 = 500;    
+            let minTempDay1 = 500;
             for (let i = 0; i < 11; i++) {
-            // minTempDay1= data.list[i].main.temp_min ; 
-                if ((data.list[i].dt_txt[9]) == dd + 1) {
+                // minTempDay1= data.list[i].main.temp_min ; 
+                if ((data.list[i].dt_txt.substring(8, 10)) == dd + 1) {
                     // console.log(data.list[i].main.temp_max)
-                    if (data.list[i].main.temp_min < minTempDay1) { 
-                    minTempDay1 = data.list[i].main.temp_min;
-                    // console.log(i)
+                    if (data.list[i].main.temp_min < minTempDay1) {
+                        minTempDay1 = data.list[i].main.temp_min;
+                        // console.log(i)
+                    }
                 }
-                }
-            }           
+            }
             console.log("Min temp for " + (daysDigit(dayOfWeek + 1)) + " is " + (Math.round((minTempDay1 - 273.15) * (9 / 5) + 32)))
             Day1Min.textContent = (Math.round((minTempDay1 - 273.15) * (9 / 5) + 32));
 
 
 
-            
-            let maxTempDay2= 0;
+
+            let maxTempDay2 = 0;
             for (let i = 0; i < 39; i++) {
-                if ((data.list[i].dt_txt[9]) == dd + 2) {
+                if ((data.list[i].dt_txt.substring(8, 10)) == dd + 2) {
                     // console.log(data.list[i].main.temp_max)
-                    if (data.list[i].main.temp_max > maxTempDay2) { 
-                    maxTempDay2 = data.list[i].main.temp_max;
-                    // console.log(i)
-                }
+                    if (data.list[i].main.temp_max > maxTempDay2) {
+                        maxTempDay2 = data.list[i].main.temp_max;
+                        // console.log(i)
+                    }
                 }
             }
             console.log("Max temp for " + (daysDigit(dayOfWeek + 2)) + " is " + (Math.round((maxTempDay2 - 273.15) * (9 / 5) + 32)))
-             Day2Max.textContent = (Math.round((maxTempDay2 - 273.15) * (9 / 5) + 32))
+            Day2Max.textContent = (Math.round((maxTempDay2 - 273.15) * (9 / 5) + 32))
 
-            let minTempDay2 = 500;    
+            let minTempDay2 = 500;
             for (let i = 0; i < 39; i++) {
-            // minTempDay2= data.list[i].main.temp_min ; 
-                if ((data.list[i].dt_txt[9]) == dd + 2) {
+                // minTempDay2= data.list[i].main.temp_min ; 
+                if ((data.list[i].dt_txt.substring(8, 10)) == dd + 2) {
                     // console.log(data.list[i].main.temp_max)
-                    if (data.list[i].main.temp_min < minTempDay2) { 
-                    minTempDay2 = data.list[i].main.temp_min;
-                    // console.log(i)
+                    if (data.list[i].main.temp_min < minTempDay2) {
+                        minTempDay2 = data.list[i].main.temp_min;
+                        // console.log(i)
+                    }
                 }
-                }
-            }           
+            }
             console.log("Min temp for " + (daysDigit(dayOfWeek + 2)) + " is " + (Math.round((minTempDay2 - 273.15) * (9 / 5) + 32)))
-             Day2Min.textContent =  (Math.round((minTempDay2 - 273.15) * (9 / 5) + 32))
+            Day2Min.textContent = (Math.round((minTempDay2 - 273.15) * (9 / 5) + 32))
 
 
 
             let maxTempDay3 = 0;
             for (let i = 0; i < 39; i++) {
-                if ((data.list[i].dt_txt[9]) == dd + 3) {
+                if ((data.list[i].dt_txt.substring(8, 10)) == dd + 3) {
                     // console.log(data.list[i].main.temp_max)
-                    if (data.list[i].main.temp_max > maxTempDay3) { 
-                    maxTempDay3 = data.list[i].main.temp_max;
-                    // console.log(i)
-                }
+                    if (data.list[i].main.temp_max > maxTempDay3) {
+                        maxTempDay3 = data.list[i].main.temp_max;
+                        // console.log(i)
+                    }
                 }
             }
             console.log("Max temp for " + (daysDigit(dayOfWeek + 3)) + " is " + (Math.round((maxTempDay3 - 273.15) * (9 / 5) + 32)))
             Day3Max.textContent = (Math.round((maxTempDay3 - 273.15) * (9 / 5) + 32))
-                 
-            let minTempDay3 = 500;    
+
+            let minTempDay3 = 500;
             for (let i = 0; i < 39; i++) {
-            // minTempDay3= data.list[i].main.temp_min ; 
-                if ((data.list[i].dt_txt[9]) == dd + 3) {
+                // minTempDay3= data.list[i].main.temp_min ; 
+                if ((data.list[i].dt_txt.substring(8, 10)) == dd + 3) {
                     // console.log(data.list[i].main.temp_max)
-                    if (data.list[i].main.temp_min < minTempDay3) { 
-                    minTempDay3 = data.list[i].main.temp_min;
-                    // console.log(i)
+                    if (data.list[i].main.temp_min < minTempDay3) {
+                        minTempDay3 = data.list[i].main.temp_min;
+                        // console.log(i)
+                    }
                 }
-                }
-            }           
+            }
             console.log("Min temp for " + (daysDigit(dayOfWeek + 3)) + " is " + (Math.round((minTempDay3 - 273.15) * (9 / 5) + 32)))
             Day3Min.textContent = (Math.round((minTempDay3 - 273.15) * (9 / 5) + 32))
-                 
 
-            
+
+
             let maxTempDay4 = 0;
             for (let i = 0; i < 39; i++) {
-                if ((data.list[i].dt_txt[9]) == dd + 4) {
+                if ((data.list[i].dt_txt.substring(8, 10)) == dd + 4) {
                     // console.log(data.list[i].main.temp_max)
-                    if (data.list[i].main.temp_max > maxTempDay4) { 
-                    maxTempDay4 = data.list[i].main.temp_max;
-                    // console.log(i)
-                }
+                    if (data.list[i].main.temp_max > maxTempDay4) {
+                        maxTempDay4 = data.list[i].main.temp_max;
+                        // console.log(i)
+                    }
                 }
             }
             console.log("Max temp for " + (daysDigit(dayOfWeek + 4)) + " is " + (Math.round((maxTempDay4 - 273.15) * (9 / 5) + 32)))
             Day4Max.textContent = (Math.round((maxTempDay4 - 273.15) * (9 / 5) + 32))
-                
-            let minTempDay4 = 500;    
+
+            let minTempDay4 = 500;
             for (let i = 0; i < 39; i++) {
-            
-                if ((data.list[i].dt_txt[9]) == dd + 4) {
+
+                if ((data.list[i].dt_txt.substring(8, 10)) == dd + 4) {
                     // minTempDay4= data.list[i].main.temp_min ; 
                     // console.log(data.list[i].main.temp_max)
-                    if (data.list[i].main.temp_min < minTempDay4) { 
-                    minTempDay4 = data.list[i].main.temp_min;
-                    // console.log(i)
+                    if (data.list[i].main.temp_min < minTempDay4) {
+                        minTempDay4 = data.list[i].main.temp_min;
+                        // console.log(i)
+                    }
                 }
-                }
-            }           
+            }
             console.log("Min temp for " + (daysDigit(dayOfWeek + 4)) + " is " + (Math.round((minTempDay4 - 273.15) * (9 / 5) + 32)))
             Day4Min.textContent = (Math.round((minTempDay4 - 273.15) * (9 / 5) + 32))
-                 
+
 
             let maxTempDay5 = 0;
             for (let i = 0; i < 39; i++) {
-                if ((data.list[i].dt_txt[9]) == dd + 5) {
+                if ((data.list[i].dt_txt.substring(8, 10)) == dd + 5) {
                     // console.log(data.list[i].main.temp_max)
-                    if (data.list[i].main.temp_max > maxTempDay5) { 
-                    maxTempDay5 = data.list[i].main.temp_max;
-                    // console.log(i)
-                }
+                    if (data.list[i].main.temp_max > maxTempDay5) {
+                        maxTempDay5 = data.list[i].main.temp_max;
+                        console.log(dd)
+                    }
                 }
             }
             console.log("Max temp for " + (daysDigit(dayOfWeek + 5)) + " is " + (Math.round((maxTempDay5 - 273.15) * (9 / 5) + 32)))
             Day5Max.textContent = (Math.round((maxTempDay5 - 273.15) * (9 / 5) + 32))
-                 
-            let minTempDay5 = 500;    
+
+            let minTempDay5 = 500;
             for (let i = 0; i < 39; i++) {
-            
-                if ((data.list[i].dt_txt[9]) == dd + 5) {
+
+                if ((data.list[i].dt_txt.substring(8, 10)) == dd + 5) {
                     // minTempDay5= data.list[i].main.temp_min ; 
                     // console.log(data.list[i].main.temp_max)
-                    if (data.list[i].main.temp_min < minTempDay5) { 
-                    minTempDay5 = data.list[i].main.temp_min;
+                    if (data.list[i].main.temp_min < minTempDay5) {
+                        minTempDay5 = data.list[i].main.temp_min;
                         // console.log(i)
                         // console.log(minTempDay5)
                     }
-                    
+
                 }
-            }           
+            }
             console.log("Min temp for " + (daysDigit(dayOfWeek + 5)) + " is " + (Math.round((minTempDay5 - 273.15) * (9 / 5) + 32)))
             // console.log("Min temp for " + (daysDigit(dayOfWeek + 5)) + " is " + minTempDay5)
             Day5Min.textContent = (Math.round((minTempDay5 - 273.15) * (9 / 5) + 32))
-
-
-
         })
 }
 
 
+
+
+
+
+
+
+// -------------------------------------------------------------------------------------------------------------
+
+
+
+const dateArray = 
+
+
+function ApiCall5DaysForcast2(lat, lon) {
+
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`)
+
+        .then((response) => {
+            return response.json()
+        })
+        .then((data) => {
+            console.log(data)
+            // console.log(data.list[0].main.temp_max)
+            console.log(data.list[0].dt_txt.substring(8, 10))
+            console.log(`${dd}`);
+            main1.textContent = (daysDigit(dayOfWeek))
+
+            if ((data.list[i].dt_txt.substring(8, 10)) == dd + 5) {
+                // console.log(data.list[i].main.temp_max)
+                if (data.list[i].main.temp_max > maxTempDay5) {
+                    maxTempDay5 = data.list[i].main.temp_max;
+                    console.log(dd)
+                }
+            }
+
+
+
+        })
+    }
+    // ApiCall5DaysForcast2();
+
+
+
+
+
+
+
+// ------------------------------------------------------------------------------------------------------
+
+
+
+
+
 main2.textContent = daysDigit(dayOfWeek)
-main12.textContent = daysDigit(dayOfWeek )
-main22.textContent = daysDigit(dayOfWeek )
+main12.textContent = daysDigit(dayOfWeek)
+main22.textContent = daysDigit(dayOfWeek)
 
 dayName1.textContent = daysDigit(dayOfWeek + 1)
 dayName2.textContent = daysDigit(dayOfWeek + 2)
