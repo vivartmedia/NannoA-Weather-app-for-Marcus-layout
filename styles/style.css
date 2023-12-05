@@ -40,6 +40,8 @@ nav {
     grid-area: nav;
     border-radius: var(--main-radius);
     padding-top: var(--main-padding);
+    display: flex;
+    justify-content: space-between;
 }
 
 main {

@@ -1,5 +1,21 @@
 import { apiKey } from "./environment.js";
 
+let main1 = document.getElementById("main1")
+let main12 = document.getElementById('main12')
+let main2 = document.getElementById("main2")
+let main22 = document.getElementById('main22')
+
+let city = document.getElementById("city")
+let state = document.getElementById('state')
+
+
+let day1 = document.getElementById("day1")
+let day2 = document.getElementById('day2')
+let day3 = document.getElementById('day3')
+let day4 = document.getElementById('day4')
+let day5 = document.getElementById('day5')
+
+
 navigator.geolocation.getCurrentPosition(succes, errorFunc)
 let latFunc;
 let longFunc;
@@ -29,9 +45,13 @@ function ApiCall(lat, lon) {
             let tempDgr = document.getElementById('tempDgr');
             let tempMax = document.getElementById('tempMax');
             let tempMin = document.getElementById('tempMin');
-            let dgrFarenheit = ("The temp today is = " + (Math.round(((data.main.temp) - 273.15) * 9 / 5 + 32)) + " degree fahrenheit!");
+            let dgrFarenheit = ("The temp now is = " + (Math.round(((data.main.temp) - 273.15) * 9 / 5 + 32)) + " degree fahrenheit!");
             // tempDgr.textContent = dgrFarenheit;
             console.log(dgrFarenheit)
+            main12.textContent = dgrFarenheit
+               main2.textContent = ("The MAX temp today is = " + (Math.round(((data.main.temp_max) - 273.15) * 9 / 5 + 32)) + " degree fahrenheit!");
+            main22.textContent =  ("The MIN temp today is = " + (Math.round(((data.main.temp_min) - 273.15) * 9 / 5 + 32)) + " degree fahrenheit!");
+            
             console.log("The MAX temp today is = " + (Math.round(((data.main.temp_max) - 273.15) * 9 / 5 + 32)) + " degree fahrenheit!");
             console.log("The MIN temp today is = " + (Math.round(((data.main.temp_min) - 273.15) * 9 / 5 + 32)) + " degree fahrenheit!");
             // ("The MAX temp in here is = " +  (Math.round(((data.main.temp_min) - 273.15) * 9 / 5 + 32)) + " degree fahrenheit!");
@@ -92,6 +112,7 @@ function ApiCall5DaysForcast(lat, lon) {
             // console.log(data.list[0].main.temp_max)
             console.log(data.list[0].dt_txt[9])
             console.log(`${dd}`);
+            main1.textContent = (daysDigit(dayOfWeek))
      
             let maxTempDay1= 0;           
             for (let i = 0; i < 11; i++) {
@@ -237,6 +258,16 @@ function ApiCall5DaysForcast(lat, lon) {
         })
 }
 
+
+main2.textContent = daysDigit(dayOfWeek)
+main12.textContent = daysDigit(dayOfWeek )
+main22.textContent = daysDigit(dayOfWeek )
+
+day1.textContent = daysDigit(dayOfWeek + 1)
+day2.textContent = daysDigit(dayOfWeek + 2)
+day3.textContent = daysDigit(dayOfWeek + 3)
+day4.textContent = daysDigit(dayOfWeek + 4)
+day5.textContent = daysDigit(dayOfWeek + 5)
 // ApiCall5DaysForcast();
 function ApiCallLocation(lat, lon) {
 
@@ -247,9 +278,10 @@ function ApiCallLocation(lat, lon) {
         })
         .then((data) => {
             console.log(data[0].name)
+            console.log(data[0].state)
+            city.textContent = data[0].name + " " + data[0].state
 
             for (let i = 0; i < 7; i++) {
-
             }
         })
 }
