@@ -28,9 +28,9 @@ body {
         "sidebar day1 day2 day3 day4 day5"
         "sidebar day1 day2 day3 day4 day5";
     grid-gap: 1rem;
-    font-weight: 300;
+    font-weight: 500;
     text-transform: uppercase;
-    font-size: 30px;
+    font-size: 40px;
     color: #004d40;
     text-align: center;
 }
@@ -41,7 +41,8 @@ nav {
     border-radius: var(--main-radius);
     padding-top: var(--main-padding);
     display: flex;
-    justify-content: space-between;
+        justify-content: space-around;
+        align-items: center;
 }
 
 main {
@@ -61,7 +62,13 @@ main {
 }
 
 .main {
+    display: flex;
+    justify-content: space-around;
     margin: 10px 10px;
+    /* justify-content: center; */
+    /* centering the text row*/
+    align-items: center;
+    /* centering the text column*/
 }
 
 .day {
@@ -69,10 +76,18 @@ main {
 }
 
 #day1 {
+    display: flex;
+       flex-direction: column;
+        justify-content: space-around;
+            align-items: center;
     background: #6fffd2;
     grid-area: day1;
     border-radius: var(--main-radius);
     padding-top: var(--main-padding);
+}
+.weatherIcon1{
+    width: 200%;
+    height: 200%;
 }
 
 #day2 {
