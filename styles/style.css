@@ -2,6 +2,8 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    color: white;
+ 
 }
 
 body {
@@ -31,8 +33,9 @@ body {
     font-weight: 500;
     text-transform: uppercase;
     font-size: 40px;
-    color: #004d40;
+    /* color: #004d40; */
     text-align: center;
+    background: #292929;
 }
 
 nav {
@@ -48,14 +51,14 @@ nav {
 main {
     display: flex;
     justify-content: space-around;
-    background: #84ffff;
+    background: #03899e;
     grid-area: main;
     border-radius: var(--main-radius);
     padding-top: var(--main-padding);
 }
 
 #sidebar {
-    background: #18ffff;
+    background: rgb(0, 124, 169);
     grid-area: sidebar;
     border-radius: var(--main-radius);
     padding-top: var(--main-padding);
@@ -75,12 +78,23 @@ main {
     margin: 10px 10px 40px 10px;
 }
 
+.day {
+    display: flex;
+       flex-direction: column;
+        justify-content: space-around;
+            align-items: center;
+    background: #03899e;
+    grid-area: day1;
+    border-radius: var(--main-radius);
+    padding-top: var(--main-padding);
+}
+
 #day1 {
     display: flex;
        flex-direction: column;
         justify-content: space-around;
             align-items: center;
-    background: #6fffd2;
+    /* background: #6fffd2; */
     grid-area: day1;
     border-radius: var(--main-radius);
     padding-top: var(--main-padding);
@@ -91,28 +105,28 @@ main {
 }
 
 #day2 {
-    background: #64ffda;
+    /* background: #64ffda; */
     grid-area: day2;
     border-radius: var(--main-radius);
     padding-top: var(--main-padding);
 }
 
 #day3 {
-    background: #73ffba;
+    /* background: #73ffba; */
     grid-area: day3;
     border-radius: var(--main-radius);
     padding-top: var(--main-padding);
 }
 
 #day4 {
-    background: #73ffba;
+    /* background: #73ffba; */
     grid-area: day4;
     border-radius: var(--main-radius);
     padding-top: var(--main-padding);
 }
 
 #day5 {
-    background: #73ffba;
+    /* background: #73ffba; */
     grid-area: day5;
     border-radius: var(--main-radius);
     padding-top: var(--main-padding);

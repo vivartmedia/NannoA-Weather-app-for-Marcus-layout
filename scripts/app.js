@@ -153,6 +153,7 @@ function ApiCall5DaysForcast(lat, lon) {
             console.log("Max temp for " + (daysDigit(dayOfWeek + 1)) + " is " + (Math.round((maxTempDay1 - 273.15) * (9 / 5) + 32)))
             Day1Max.textContent = (Math.round((maxTempDay1 - 273.15) * (9 / 5) + 32));
            
+
             let minTempDay1 = 500;
             for (let i = 0; i < 8; i++) {
                 // minTempDay1= data.list[i].main.temp_min ; 
@@ -166,7 +167,7 @@ function ApiCall5DaysForcast(lat, lon) {
             }
             console.log("Min temp for " + (daysDigit(dayOfWeek + 1)) + " is " + (Math.round((minTempDay1 - 273.15) * (9 / 5) + 32)))
             Day1Min.textContent = (Math.round((minTempDay1 - 273.15) * (9 / 5) + 32));
-
+           
 
 
 
