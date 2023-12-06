@@ -59,7 +59,7 @@ function ApiCall(lat, lon) {
             return response.json()
         })
         .then((data) => {
-            // console.log(data)
+             console.log(data)
             let tempDgr = document.getElementById('tempDgr');
             let tempMax = document.getElementById('tempMax');
             let tempMin = document.getElementById('tempMin');
@@ -122,6 +122,11 @@ function daysDigit(dayOfWeek) {
     }
 }
 
+
+
+
+
+
 function ApiCall5DaysForcast(lat, lon) {
 
     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`)
@@ -137,25 +142,26 @@ function ApiCall5DaysForcast(lat, lon) {
             main1.textContent = (daysDigit(dayOfWeek))
 
             let maxTempDay1 = 0;
-            for (let i = 0; i < 11; i++) {
-                if ((data.list[i].dt_txt.substring(8, 10)) == dd + 1) {
+            for (let i = 0; i < 8; i++) {
+                // if ((data.list[i].dt_txt.substring(8, 10)) == dd + 1) {
                     // console.log(data.list[i].main.temp_max)
                     if (data.list[i].main.temp_max > maxTempDay1) {
                         maxTempDay1 = data.list[i].main.temp_max;
                     }
-                }
+                // }
             }
             console.log("Max temp for " + (daysDigit(dayOfWeek + 1)) + " is " + (Math.round((maxTempDay1 - 273.15) * (9 / 5) + 32)))
             Day1Max.textContent = (Math.round((maxTempDay1 - 273.15) * (9 / 5) + 32));
+           
             let minTempDay1 = 500;
-            for (let i = 0; i < 11; i++) {
+            for (let i = 0; i < 8; i++) {
                 // minTempDay1= data.list[i].main.temp_min ; 
-                if ((data.list[i].dt_txt.substring(8, 10)) == dd + 1) {
+                // if ((data.list[i].dt_txt.substring(8, 10)) == dd + 1) {
                     // console.log(data.list[i].main.temp_max)
                     if (data.list[i].main.temp_min < minTempDay1) {
                         minTempDay1 = data.list[i].main.temp_min;
                         // console.log(i)
-                    }
+                    // }
                 }
             }
             console.log("Min temp for " + (daysDigit(dayOfWeek + 1)) + " is " + (Math.round((minTempDay1 - 273.15) * (9 / 5) + 32)))
@@ -165,7 +171,7 @@ function ApiCall5DaysForcast(lat, lon) {
 
 
             let maxTempDay2 = 0;
-            for (let i = 0; i < 39; i++) {
+            for (let i = 8; i < 16; i++) {
                 if ((data.list[i].dt_txt.substring(8, 10)) == dd + 2) {
                     // console.log(data.list[i].main.temp_max)
                     if (data.list[i].main.temp_max > maxTempDay2) {
@@ -178,7 +184,7 @@ function ApiCall5DaysForcast(lat, lon) {
             Day2Max.textContent = (Math.round((maxTempDay2 - 273.15) * (9 / 5) + 32))
 
             let minTempDay2 = 500;
-            for (let i = 0; i < 39; i++) {
+            for (let i = 8; i < 16; i++) {
                 // minTempDay2= data.list[i].main.temp_min ; 
                 if ((data.list[i].dt_txt.substring(8, 10)) == dd + 2) {
                     // console.log(data.list[i].main.temp_max)
@@ -194,7 +200,7 @@ function ApiCall5DaysForcast(lat, lon) {
 
 
             let maxTempDay3 = 0;
-            for (let i = 0; i < 39; i++) {
+            for (let i = 16; i < 24; i++) {
                 if ((data.list[i].dt_txt.substring(8, 10)) == dd + 3) {
                     // console.log(data.list[i].main.temp_max)
                     if (data.list[i].main.temp_max > maxTempDay3) {
@@ -207,7 +213,7 @@ function ApiCall5DaysForcast(lat, lon) {
             Day3Max.textContent = (Math.round((maxTempDay3 - 273.15) * (9 / 5) + 32))
 
             let minTempDay3 = 500;
-            for (let i = 0; i < 39; i++) {
+            for (let i = 16; i < 24; i++) {
                 // minTempDay3= data.list[i].main.temp_min ; 
                 if ((data.list[i].dt_txt.substring(8, 10)) == dd + 3) {
                     // console.log(data.list[i].main.temp_max)
@@ -223,7 +229,7 @@ function ApiCall5DaysForcast(lat, lon) {
 
 
             let maxTempDay4 = 0;
-            for (let i = 0; i < 39; i++) {
+            for (let i = 24; i < 32; i++) {
                 if ((data.list[i].dt_txt.substring(8, 10)) == dd + 4) {
                     // console.log(data.list[i].main.temp_max)
                     if (data.list[i].main.temp_max > maxTempDay4) {
@@ -236,7 +242,7 @@ function ApiCall5DaysForcast(lat, lon) {
             Day4Max.textContent = (Math.round((maxTempDay4 - 273.15) * (9 / 5) + 32))
 
             let minTempDay4 = 500;
-            for (let i = 0; i < 39; i++) {
+            for (let i = 24; i < 32; i++) {
 
                 if ((data.list[i].dt_txt.substring(8, 10)) == dd + 4) {
                     // minTempDay4= data.list[i].main.temp_min ; 
@@ -252,7 +258,7 @@ function ApiCall5DaysForcast(lat, lon) {
 
 
             let maxTempDay5 = 0;
-            for (let i = 0; i < 39; i++) {
+            for (let i = 32; i < 40; i++) {
                 if ((data.list[i].dt_txt.substring(8, 10)) == dd + 5) {
                     // console.log(data.list[i].main.temp_max)
                     if (data.list[i].main.temp_max > maxTempDay5) {
@@ -265,7 +271,7 @@ function ApiCall5DaysForcast(lat, lon) {
             Day5Max.textContent = (Math.round((maxTempDay5 - 273.15) * (9 / 5) + 32))
 
             let minTempDay5 = 500;
-            for (let i = 0; i < 39; i++) {
+            for (let i = 32; i < 40; i++) {
 
                 if ((data.list[i].dt_txt.substring(8, 10)) == dd + 5) {
                     // minTempDay5= data.list[i].main.temp_min ; 
@@ -294,64 +300,68 @@ function ApiCall5DaysForcast(lat, lon) {
 // -------------------------------------------------------------------------------------------------------------
 
 
+const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 // const today = new Date();
+const todayDayOfWeek = daysOfWeek[today.getDay()];
+
+console.log("Today's day of the week:", todayDayOfWeek);
+ const futureDate = new Date(today);
+for (let i = 1; i <= 5; i++) {
+ 
+    futureDate.setDate(today.getDate() + i);
+    console.log(futureDate.setDate(today.getDate() + i))
+    
+  const futureDayOfWeek = daysOfWeek[futureDate.getDay()];
+    console.log(`Day ${i} from today is:`, futureDayOfWeek);
+    if (i === 1) {
+        dayName1.textContent = futureDayOfWeek
+    } else if (i === 2) {
+        dayName2.textContent = futureDayOfWeek
+    }else if (i === 3) {
+        dayName3.textContent = futureDayOfWeek
+    }else if (i === 4) {
+        dayName4.textContent = futureDayOfWeek
+    }else if (i === 5) {
+        dayName5.textContent = futureDayOfWeek
+    }
+}
 
 
-const upcomingDate1 = new Date(today);
-upcomingDate1.setDate(today.getDate() + 1);
 
-const upcomingDate2 = new Date(today);
-upcomingDate2.setDate(today.getDate() + 2);
+// const upcomingDate = new Date(today);
+// upcomingDate.setDate(today.getDate() + 29);
 
-const upcomingDate3 = new Date(today);
-upcomingDate3.setDate(today.getDate() + 3);
-
-const upcomingDate4 = new Date(today);
-upcomingDate4.setDate(today.getDate() + 4);
-
-const upcomingDate5 = new Date(today);
-upcomingDate5.setDate(today.getDate() + 5);
-
-console.log("Today's date:", today.toISOString().slice(0, 10));
-console.log("Upcoming date 1:", upcomingDate1.toISOString().slice(0, 10));
-console.log("Upcoming date 2:", upcomingDate2.toISOString().slice(0, 10));
-console.log("Upcoming date 3:", upcomingDate3.toISOString().slice(0, 10));
-console.log("Upcoming date 4:", upcomingDate4.toISOString().slice(0, 10));
-console.log("Upcoming date 5:", upcomingDate5.toISOString().slice(0, 10));
+// console.log("Today's date:", today.toISOString().slice(0, 10));
+// console.log("Upcoming date in 29 days:", upcomingDate.toISOString().slice(0, 10));
 
 
-const upcomingDate = new Date(today);
-upcomingDate.setDate(today.getDate() + 29);
+// function ApiCall5DaysForcast2(lat, lon) {
 
-console.log("Today's date:", today.toISOString().slice(0, 10));
-console.log("Upcoming date in 29 days:", upcomingDate.toISOString().slice(0, 10));
+    
+//     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`)
+        
 
+//         .then((response) => {
+//             return response.json()
+//         })
+//         .then((data) => {
+//             // console.log(data)
+//             // // console.log(data.list[0].main.temp_max)
+//             // console.log(data.list[0].dt_txt.substring(8, 10))
+//             // console.log(`${dd}`);
+//             // main1.textContent = (daysDigit(dayOfWeek))
 
-function ApiCall5DaysForcast2(lat, lon) {
-
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`)
-
-        .then((response) => {
-            return response.json()
-        })
-        .then((data) => {
-            // console.log(data)
-            // // console.log(data.list[0].main.temp_max)
-            // console.log(data.list[0].dt_txt.substring(8, 10))
-            // console.log(`${dd}`);
-            // main1.textContent = (daysDigit(dayOfWeek))
-
-            for (let i = 0; i < data.list.length; i++){
-                console.log(data.list.length + " this is how many list items we have")
-            }
+//             // for (let i = 0; i < data.list.length; i++){
+//             //     console.log(data.list.length + " this is how many list items we have")
+//             // }
             
 
 
 
-        })
-    }
-    ApiCall5DaysForcast2();
+//         })
+//     }
+//     ApiCall5DaysForcast2();
 
 
 
@@ -369,11 +379,10 @@ main2.textContent = daysDigit(dayOfWeek)
 main12.textContent = daysDigit(dayOfWeek)
 main22.textContent = daysDigit(dayOfWeek)
 
-dayName1.textContent = daysDigit(dayOfWeek + 1)
-dayName2.textContent = daysDigit(dayOfWeek + 2)
-dayName3.textContent = daysDigit(dayOfWeek + 3)
-dayName4.textContent = daysDigit(dayOfWeek + 4)
-dayName5.textContent = daysDigit(dayOfWeek + 5)
+
+// dayName3.textContent = daysDigit(dayOfWeek + 3)
+// dayName4.textContent = daysDigit(dayOfWeek + 4)
+// dayName5.textContent = daysDigit(dayOfWeek + 5)
 // ApiCall5DaysForcast();
 function ApiCallLocation(lat, lon) {
 
