@@ -50,6 +50,17 @@ nav {
         align-items: center;
 }
 
+#saveFav{
+    background-color: #292929;
+    font-size: 18px;
+    padding: 10px 20px;
+}
+#searchBtn{
+    border: #292929;
+        font-size: 18px;
+    padding: 10px 20px;
+    color: black;
+}
 .main {
      /* display: flex; */
     /* justify-content: space-around; */
@@ -96,9 +107,7 @@ nav {
     /* centering the text column*/
 }
 
-#searchBtn {
-    color: black;
-}
+
 
 .day {
     margin: 20px 20px 20px 20px;
