@@ -54,7 +54,7 @@ nav {
      /* display: flex; */
     /* justify-content: space-around; */
  
-    background: #03899e;
+    background: #03899e6c;
     grid-area: main;
     border-radius: var(--main-radius);
     padding-top: var(--main-padding);
@@ -80,7 +80,7 @@ nav {
 }
 
 #sidebar {
-    background: rgb(0, 124, 169);
+    background: rgba(0, 124, 169, 0.376);
     grid-area: sidebar;
     border-radius: var(--main-radius);
     padding-top: var(--main-padding);
@@ -89,15 +89,19 @@ nav {
 .main {
     display: flex;
     justify-content: space-around;
-    /* margin: 10px 10px; */
+    margin: 5px 20px;
     /* justify-content: center; */
     /* centering the text row*/
     align-items: center;
     /* centering the text column*/
 }
 
+#searchBtn {
+    color: black;
+}
+
 .day {
-    margin: 0px 0px 20px 0px;
+    margin: 20px 20px 20px 20px;
 }
 
 .day {
@@ -105,7 +109,7 @@ nav {
        flex-direction: column;
         justify-content: space-around;
             align-items: center;
-    background: #03899e;
+    background: #03899e68;
     grid-area: day1;
     border-radius: var(--main-radius);
     padding-top: var(--main-padding);

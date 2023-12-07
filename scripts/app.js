@@ -16,17 +16,32 @@ const searchBtn = document.getElementById("searchBtn");
 searchBtn.addEventListener("keypress", (event) => {
     if (event.key === "Enter"){
         geoLocatin(searchBtn.value);
+        searchBtn.value = ""
     }
    
 })
+
+let searchLatFunc;
+let searchLongFunc;
 function geoLocatin(city){
     fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`)
         .then((response)=> {
             return response.json()
         })
             .then((data) => {
+                
+            
+    
+    searchLatFunc = data[0].lat;
+    searchLongFunc = data[0].lon;
+    console.log(searchLatFunc)
+    console.log(searchLongFunc)
+    ApiCall(searchLatFunc, searchLongFunc)
+    ApiCall5DaysForcast(searchLatFunc, searchLongFunc)
+                ApiCallLocation(searchLatFunc, searchLongFunc)
                 console.log(data)
-            })
+    })
+    
 }
 
 
@@ -64,8 +79,8 @@ let longFunc;
 function succes(position) {
     latFunc = position.coords.latitude;
     longFunc = position.coords.longitude;
-    console.log(latFunc)
-    console.log(longFunc)
+    // console.log(latFunc)
+    // console.log(longFunc)
     ApiCall(latFunc, longFunc)
     ApiCall5DaysForcast(latFunc, longFunc)
     ApiCallLocation(latFunc, longFunc)
@@ -96,8 +111,8 @@ function ApiCall(lat, lon) {
             main2.textContent = ("High: " + (Math.round(data.main.temp_max)+ "°F"));
             main22.textContent = ("Low: " + (Math.round(data.main.temp_min)+ "°F"));
 
-            console.log(" MAX  today = " + (Math.round(((data.main.temp_max) - 273.15) * 9 / 5 + 32)) + "");
-            console.log(" MIN today  = " + (Math.round(((data.main.temp_min) - 273.15) * 9 / 5 + 32)) + " ");
+            // console.log(" MAX  today = " + (Math.round(((data.main.temp_max) - 273.15) * 9 / 5 + 32)) + "");
+            // console.log(" MIN today  = " + (Math.round(((data.main.temp_min) - 273.15) * 9 / 5 + 32)) + " ");
             // ("The MAX temp in here is = " +  (Math.round(((data.main.temp_min) - 273.15) * 9 / 5 + 32)) + " degree fahrenheit!");
             // tempMax.textContent = ("The MAX temp in here is = " +  (Math.round(((data.main.temp_max) - 273.15) * 9 / 5 + 32)) + " degree fahrenheit!");
             // tempMin.textContent = ("The MIN temp in here is = " +  (Math.round(((data.main.temp_min) - 273.15) * 9 / 5 + 32)) + " degree fahrenheit!");
@@ -106,14 +121,14 @@ function ApiCall(lat, lon) {
 
 // ApiCall();
 const now = new Date();
-console.log(now);
+// console.log(now);
 
 const today = new Date();
-console.log(today.toLocaleDateString('en-US'));
+// console.log(today.toLocaleDateString('en-US'));
 let dayOfWeek1;
 const dd = today.getDate();
 const dayOfWeek = today.getDay();
-console.log(dayOfWeek)
+// console.log(dayOfWeek)
 function daysDigit(dayOfWeek) {
     switch (dayOfWeek) {
         case 0:
@@ -163,8 +178,8 @@ function ApiCall5DaysForcast(lat, lon) {
         .then((data) => {
             console.log(data)
             // console.log(data.list[0].main.temp_max)
-            console.log(data.list[0].dt_txt.substring(8, 10))
-            console.log(`${dd}`);
+            // console.log(data.list[0].dt_txt.substring(8, 10))
+            // console.log(`${dd}`);
             main1.textContent = (daysDigit(dayOfWeek))
 
             let maxTempDay1 = 0;
@@ -174,11 +189,11 @@ function ApiCall5DaysForcast(lat, lon) {
                     if (data.list[i].main.temp_max > maxTempDay1) {
                         maxTempDay1 = data.list[i].main.temp_max;
                         document.getElementById("weatherIcon1").src = (`https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png`);
-                        console.log(i)
+                        // console.log(i)
                     }
                 // }
             }
-            console.log("Max temp for " + (daysDigit(dayOfWeek + 1)) + " is " + maxTempDay1)
+            // console.log("Max temp for " + (daysDigit(dayOfWeek + 1)) + " is " + maxTempDay1)
             Day1Max.textContent = "H: " + Math.round(maxTempDay1)+ "°F";
            
 
@@ -193,7 +208,7 @@ function ApiCall5DaysForcast(lat, lon) {
                     // }
                 }
             }
-            console.log("Min temp for " + (daysDigit(dayOfWeek + 1)) + " is " + (Math.round((minTempDay1 - 273.15) * (9 / 5) + 32)))
+            // console.log("Min temp for " + (daysDigit(dayOfWeek + 1)) + " is " + (Math.round((minTempDay1 - 273.15) * (9 / 5) + 32)))
             Day1Min.textContent = "L: " + Math.round(minTempDay1)+ "°F";
            
 
@@ -204,13 +219,13 @@ function ApiCall5DaysForcast(lat, lon) {
                     // console.log(data.list[i].main.temp_max)
                     if (data.list[i].main.temp_max > maxTempDay2) {
                         maxTempDay2 = data.list[i].main.temp_max;
-                        console.log(i)
+                        // console.log(i)
                         document.getElementById("weatherIcon2").src = (`https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png`);
 
                     }
                 }
             }
-            console.log("Max temp for " + (daysDigit(dayOfWeek + 2)) + " is " + (Math.round((maxTempDay2 - 273.15) * (9 / 5) + 32)))
+            // console.log("Max temp for " + (daysDigit(dayOfWeek + 2)) + " is " + (Math.round((maxTempDay2 - 273.15) * (9 / 5) + 32)))
             Day2Max.textContent = "H: " + Math.round(maxTempDay2)+ "°F"
 
             let minTempDay2 = 500;
@@ -224,7 +239,7 @@ function ApiCall5DaysForcast(lat, lon) {
                     }
                 }
             }
-            console.log("Min temp for " + (daysDigit(dayOfWeek + 2)) + " is " + (Math.round((minTempDay2 - 273.15) * (9 / 5) + 32)))
+            // console.log("Min temp for " + (daysDigit(dayOfWeek + 2)) + " is " + (Math.round((minTempDay2 - 273.15) * (9 / 5) + 32)))
             Day2Min.textContent = ("L: " + Math.round(minTempDay2)+ "°F")
 
 
@@ -237,11 +252,10 @@ function ApiCall5DaysForcast(lat, lon) {
                         maxTempDay3 = data.list[i].main.temp_max;
                         document.getElementById("weatherIcon3").src = (`https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png`);
 
-                        console.log(i)
+                        // console.log(i)
                     }
                 }
             }
-            console.log("Max temp for " + (daysDigit(dayOfWeek + 3)) + " is " + (Math.round((maxTempDay3 - 273.15) * (9 / 5) + 32)))
             Day3Max.textContent = ("H: " + Math.round(maxTempDay3)+ "°F")
 
             let minTempDay3 = 500;
@@ -255,7 +269,6 @@ function ApiCall5DaysForcast(lat, lon) {
                     }
                 }
             }
-            console.log("Min temp for " + (daysDigit(dayOfWeek + 3)) + " is " + (Math.round((minTempDay3 - 273.15) * (9 / 5) + 32)))
             Day3Min.textContent = ("L: " + Math.round(minTempDay3)+ "°F")
 
 
@@ -268,11 +281,10 @@ function ApiCall5DaysForcast(lat, lon) {
                         maxTempDay4 = data.list[i].main.temp_max;
                         document.getElementById("weatherIcon4").src = (`https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png`);
 
-                        console.log(i)
+                        // console.log(i)
                     }
                 }
             }
-            console.log("Max temp for " + (daysDigit(dayOfWeek + 4)) + " is " + (Math.round((maxTempDay4 - 273.15) * (9 / 5) + 32)))
             Day4Max.textContent = "H: " + Math.round(maxTempDay4)+ "°F"
 
             let minTempDay4 = 500;
@@ -287,7 +299,6 @@ function ApiCall5DaysForcast(lat, lon) {
                     }
                 }
             }
-            console.log("Min temp for " + (daysDigit(dayOfWeek + 4)) + " is " + (Math.round((minTempDay4 - 273.15) * (9 / 5) + 32)))
             Day4Min.textContent = ("L: " + Math.round(minTempDay4)+ "°F")
 
 
@@ -299,11 +310,10 @@ function ApiCall5DaysForcast(lat, lon) {
                         maxTempDay5 = data.list[i].main.temp_max;
                         document.getElementById("weatherIcon5").src = (`https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png`);
 
-                        console.log(i)
+                        // console.log(i)
                     }
                 }
             }
-            console.log("Max temp for " + (daysDigit(dayOfWeek + 5)) + " is " + (Math.round((maxTempDay5 - 273.15) * (9 / 5) + 32)))
             Day5Max.textContent = ("H: " + Math.round(maxTempDay5)+ "°F")
 
             let minTempDay5 = 500;
@@ -320,7 +330,6 @@ function ApiCall5DaysForcast(lat, lon) {
 
                 }
             }
-            console.log("Min temp for " + (daysDigit(dayOfWeek + 5)) + " is " + (Math.round((minTempDay5 - 273.15) * (9 / 5) + 32)))
             // console.log("Min temp for " + (daysDigit(dayOfWeek + 5)) + " is " + minTempDay5)
             Day5Min.textContent = ("L: " + Math.round(minTempDay5)+ "°F")
         })
@@ -341,15 +350,15 @@ const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Fri
 // const today = new Date();
 const todayDayOfWeek = daysOfWeek[today.getDay()];
 
-console.log("Today's day of the week:", todayDayOfWeek);
+// console.log("Today's day of the week:", todayDayOfWeek);
  const futureDate = new Date(today);
 for (let i = 1; i <= 5; i++) {
  
     futureDate.setDate(today.getDate() + i);
-    console.log(futureDate.setDate(today.getDate() + i))
+    // console.log(futureDate.setDate(today.getDate() + i))
     
   const futureDayOfWeek = daysOfWeek[futureDate.getDay()];
-    console.log(`Day ${i} from today is:`, futureDayOfWeek);
+    // console.log(`Day ${i} from today is:`, futureDayOfWeek);
     if (i === 1) {
         dayName1.textContent = futureDayOfWeek
     } else if (i === 2) {
