@@ -16,7 +16,7 @@ const searchBtn = document.getElementById("searchBtn");
 
 searchBtn.addEventListener("keypress", (event) => {
     if (event.key === "Enter") {
-        geoLocatin(searchBtn.value);
+        geoLocation(searchBtn.value);
         searchBtn.value = ""
 
     }
@@ -25,7 +25,7 @@ searchBtn.addEventListener("keypress", (event) => {
 
 let searchLatFunc;
 let searchLongFunc;
-function geoLocatin(city) {
+function geoLocation(city) {
     fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`)
         .then((response) => {
             return response.json()
@@ -498,7 +498,7 @@ function handleCitySelection(city) {
     // Here, you can call the same function that handles the search
     // Or fetch the weather data for the selected city
     console.log("City selected from favorites:", city);
-    geoLocatin(city); // Assuming geoLocate is your function to fetch weather data
+    geoLocation(city); // Assuming geoLocate is your function to fetch weather data
 }
 
 
