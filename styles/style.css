@@ -58,7 +58,7 @@ button{
 }
 
 #favorites li button {
-    transition: background-color 0.3s ease;
+    font-size: small;
 }
 
 #favorites li:hover {
@@ -67,6 +67,7 @@ button{
 ul li{
     display: flex;
     justify-content: space-between;
+    font-size:medium;
     margin: 0px 10px 5px;
     cursor: pointer; /* Changes the cursor to indicate the item is clickable */
 }
