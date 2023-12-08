@@ -470,10 +470,19 @@ function updateFavoritesList() {
     favoriteCities.forEach(city => {
         let listCity = document.createElement('li');
         listCity.textContent = city;
+
+
+// Click event for each city in the favorites list
+        listCity.addEventListener('click', () => {
+            // Call a function to handle city selection
+            handleCitySelection(city);
+        });
+
+
         let deleteFav = document.createElement('button');
         deleteFav.textContent = 'Delete';
         deleteFav.addEventListener('click', function (event) {
-            event.stopPropagation();
+            event.stopPropagation();   // Stop the event from bubbling up to the parent
             favoriteCities = favoriteCities.filter(item => item !== city);
             localStorage.setItem('favoriteCities', JSON.stringify(favoriteCities));
             updateFavoritesList();
@@ -483,6 +492,17 @@ function updateFavoritesList() {
     });
 }
 
+
+// Function to handle city selection from favorites
+function handleCitySelection(city) {
+    // Here, you can call the same function that handles the search
+    // Or fetch the weather data for the selected city
+    console.log("City selected from favorites:", city);
+    geoLocatin(city); // Assuming geoLocate is your function to fetch weather data
+}
+
+
 // Call this at the beginning to populate the favorites list initially
 updateFavoritesList();
+
 
