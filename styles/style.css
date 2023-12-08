@@ -8,7 +8,7 @@
 }
 
 body {
-    /* font-family: 'Poppins'; */
+    font-family: 'Poppins';
     
 }
 
@@ -93,7 +93,7 @@ ul li{
 #main1{
     /* display: flex;
     justify-content: center; */
-    font-size: large;
+    /* font-size: large; */
 }
 #main11{
     display: flex;
