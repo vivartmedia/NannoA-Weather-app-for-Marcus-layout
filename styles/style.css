@@ -9,7 +9,7 @@
 
 body {
     font-family: 'Poppins';
-    
+
 }
 
 :root {
@@ -46,15 +46,15 @@ nav {
     border-radius: var(--main-radius);
     padding-top: var(--main-padding);
     display: flex;
-        justify-content: space-around;
-        align-items: center;
+    justify-content: space-around;
+    align-items: center;
 }
 
-button{
-        background-color: #292929;
-        font-size: 16px;
-        padding: 0px 10px;
-       
+button {
+    background-color: #292929;
+    font-size: 16px;
+    padding: 0px 10px;
+
 }
 
 #favorites li button {
@@ -62,47 +62,49 @@ button{
 }
 
 #favorites li:hover {
-    color: rgb(196, 196, 196)/* Change the color on hover */
+    color: rgb(196, 196, 196)
+        /* Change the color on hover */
 }
-ul li{
+
+ul li {
     display: flex;
     justify-content: space-between;
-    font-size:medium;
+    font-size: medium;
     margin: 0px 10px 5px;
-    cursor: pointer; /* Changes the cursor to indicate the item is clickable */
+    cursor: pointer;
+    /* Changes the cursor to indicate the item is clickable */
 }
-#saveFav{
+
+#saveFav {
     background-color: #292929;
     font-size: 18px;
     padding: 10px 20px;
 }
-#searchBtn{
+
+#searchBtn {
     border: #292929;
-        font-size: 18px;
+    font-size: 18px;
     padding: 10px 20px;
     color: black;
 }
+
 .main {
-     /* display: flex; */
+    /* display: flex; */
     /* justify-content: space-around; */
- 
+
     background: #5db0f3ad;
     grid-area: main;
     border-radius: var(--main-radius);
     padding-top: var(--main-padding);
 }
-#main1{
-    /* display: flex;
-    justify-content: center; */
-    /* font-size: large; */
-}
-#main11{
+
+#main11 {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#weatherIconMain{
+#weatherIconMain {
     width: 150px;
 }
 
@@ -136,9 +138,9 @@ ul li{
 
 .day {
     display: flex;
-       flex-direction: column;
-        justify-content: space-around;
-            align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
     background: #5db0f3ad;
     grid-area: day1;
     border-radius: var(--main-radius);
@@ -147,15 +149,16 @@ ul li{
 
 #day1 {
     display: flex;
-       flex-direction: column;
-        justify-content: space-around;
-            align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
     /* background: #6fffd2; */
     grid-area: day1;
     border-radius: var(--main-radius);
     padding-top: var(--main-padding);
 }
-.weatherIcon1{
+
+.weatherIcon1 {
     width: 200%;
     height: 200%;
 }

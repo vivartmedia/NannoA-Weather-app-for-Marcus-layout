@@ -1,3 +1,16 @@
+// Ashur Nanno 
+
+ // Date Revised: 12/08/2023 
+
+ // Exercise or Lab name: Weather Sprint Day 5
+
+ // Brief Description of what you did: Using html/css/js i crated a weather web aplication that fetch data from Api for current and the next 5 days were has the ability to save/delete cities to favorites  
+
+// Peer reviewed by: George
+
+Peer Review Comments: Good job on fittin the vast majority of code in the app.js, but it would have been more organized to seperate everything out. You have a couple of unused variables and coded out comments that you should probably removed. A weird bug with your code when I typed a place like tokyo it didn't show me tokyo itself, but a section of tokyo. Your website is very accurate to the figma itself. Another issue that we solved was if A city wasn't within a state it would display undefined, but we fixed that by creating and if else statement so that if it didn't contain a state it would show the city name and the country name. Good Job.
+
+
 12/04/2023
 was able to fetch all the weather infos
 created teh html and css for the general layout of the page
