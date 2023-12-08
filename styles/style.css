@@ -24,7 +24,7 @@ body {
 .container {
     display: grid;
     height: 100vh;
-    grid-template-columns: 0.8fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 0.3fr .8fr 1.2fr;
     grid-template-areas:
         "sidebar nav nav nav nav nav"
@@ -56,10 +56,19 @@ button{
         padding: 0px 10px;
        
 }
+
+#favorites li button {
+    transition: background-color 0.3s ease;
+}
+
+#favorites li:hover {
+    color: rgb(196, 196, 196)/* Change the color on hover */
+}
 ul li{
     display: flex;
     justify-content: space-between;
     margin: 0px 10px 5px;
+    cursor: pointer; /* Changes the cursor to indicate the item is clickable */
 }
 #saveFav{
     background-color: #292929;
@@ -76,7 +85,7 @@ ul li{
      /* display: flex; */
     /* justify-content: space-around; */
  
-    background: #03899e6c;
+    background: #5db0f3ad;
     grid-area: main;
     border-radius: var(--main-radius);
     padding-top: var(--main-padding);
@@ -102,7 +111,7 @@ ul li{
 }
 
 #sidebar {
-    background: rgba(0, 124, 169, 0.376);
+    background: #54a1e0bb;
     grid-area: sidebar;
     border-radius: var(--main-radius);
     padding-top: var(--main-padding);
@@ -111,7 +120,7 @@ ul li{
 .main {
     display: flex;
     justify-content: space-around;
-    margin: 5px 20px;
+    margin: 5px 10px;
     /* justify-content: center; */
     /* centering the text row*/
     align-items: center;
@@ -121,7 +130,7 @@ ul li{
 
 
 .day {
-    margin: 20px 20px 20px 20px;
+    margin: 0px 10px 20px 10px;
 }
 
 .day {
@@ -129,7 +138,7 @@ ul li{
        flex-direction: column;
         justify-content: space-around;
             align-items: center;
-    background: #03899e68;
+    background: #5db0f3ad;
     grid-area: day1;
     border-radius: var(--main-radius);
     padding-top: var(--main-padding);
