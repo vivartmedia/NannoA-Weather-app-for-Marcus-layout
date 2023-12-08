@@ -50,6 +50,17 @@ nav {
         align-items: center;
 }
 
+button{
+        background-color: #292929;
+        font-size: 16px;
+        padding: 0px 10px;
+       
+}
+ul li{
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 10px 5px;
+}
 #saveFav{
     background-color: #292929;
     font-size: 18px;

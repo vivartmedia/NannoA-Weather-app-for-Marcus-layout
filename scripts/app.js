@@ -17,6 +17,7 @@ searchBtn.addEventListener("keypress", (event) => {
     if (event.key === "Enter"){
         geoLocatin(searchBtn.value);
         searchBtn.value = ""
+            
     }
    
 })
@@ -440,8 +441,31 @@ function ApiCallLocation(lat, lon) {
             console.log(data[0].name)
             console.log(data[0].state)
             city.textContent = data[0].name + " " + data[0].state
+            searchBtn.placeholder = data[0].name;
+            
 
-            for (let i = 0; i < 7; i++) {
-            }
+           document.getElementById('saveFav').addEventListener('click', function () {
+    
+    let searchCity = data[0].name;
+    let listCity = document.createElement('li');
+               listCity.textContent = searchCity;
+               if (searchCity !== "") {
+                   document.getElementById('favorites').appendChild(listCity)
+                
+                   data[0].name = "";
+                   let deleteFav = document.createElement('button');
+                   deleteFav.textContent = 'Delete';
+                   deleteFav.addEventListener('click', function () {
+                       listCity.remove()
+                   });
+                   listCity.appendChild(deleteFav)
+                    
+                
+            
+               }
+               
+})
         })
 }
+
+
