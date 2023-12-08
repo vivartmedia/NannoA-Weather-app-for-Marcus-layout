@@ -1,3 +1,4 @@
+
 import { apiKey } from "./environment.js";
 
 let main1 = document.getElementById("main1")
@@ -14,35 +15,35 @@ let state = document.getElementById('state')
 const searchBtn = document.getElementById("searchBtn");
 
 searchBtn.addEventListener("keypress", (event) => {
-    if (event.key === "Enter"){
+    if (event.key === "Enter") {
         geoLocatin(searchBtn.value);
         searchBtn.value = ""
-            
+
     }
-   
+
 })
 
 let searchLatFunc;
 let searchLongFunc;
-function geoLocatin(city){
+function geoLocatin(city) {
     fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`)
-        .then((response)=> {
+        .then((response) => {
             return response.json()
         })
-            .then((data) => {
-                
-            
-    
-    searchLatFunc = data[0].lat;
-    searchLongFunc = data[0].lon;
-    console.log(searchLatFunc)
-    console.log(searchLongFunc)
-    ApiCall(searchLatFunc, searchLongFunc)
-    ApiCall5DaysForcast(searchLatFunc, searchLongFunc)
-                ApiCallLocation(searchLatFunc, searchLongFunc)
-                console.log(data)
-    })
-    
+        .then((data) => {
+
+
+
+            searchLatFunc = data[0].lat;
+            searchLongFunc = data[0].lon;
+            console.log(searchLatFunc)
+            console.log(searchLongFunc)
+            ApiCall(searchLatFunc, searchLongFunc)
+            ApiCall5DaysForcast(searchLatFunc, searchLongFunc)
+            ApiCallLocation(searchLatFunc, searchLongFunc)
+            console.log(data)
+        })
+
 }
 
 
@@ -100,17 +101,17 @@ function ApiCall(lat, lon) {
             return response.json()
         })
         .then((data) => {
-             console.log(data)
+            console.log(data)
             let tempDgr = document.getElementById('tempDgr');
             let tempMax = document.getElementById('tempMax');
             let tempMin = document.getElementById('tempMin');
-            let dgrFarenheit = ( (Math.round(data.main.temp))+ "°F");
+            let dgrFarenheit = ((Math.round(data.main.temp)) + "°F");
             // tempDgr.textContent = dgrFarenheit;
             console.log(dgrFarenheit)
             main12.textContent = dgrFarenheit
             document.getElementById("weatherIconMain").src = (`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
-            main2.textContent = ("High: " + (Math.round(data.main.temp_max)+ "°F"));
-            main22.textContent = ("Low: " + (Math.round(data.main.temp_min)+ "°F"));
+            main2.textContent = ("High: " + (Math.round(data.main.temp_max) + "°F"));
+            main22.textContent = ("Low: " + (Math.round(data.main.temp_min) + "°F"));
 
             // console.log(" MAX  today = " + (Math.round(((data.main.temp_max) - 273.15) * 9 / 5 + 32)) + "");
             // console.log(" MIN today  = " + (Math.round(((data.main.temp_min) - 273.15) * 9 / 5 + 32)) + " ");
@@ -186,32 +187,32 @@ function ApiCall5DaysForcast(lat, lon) {
             let maxTempDay1 = 0;
             for (let i = 0; i < 8; i++) {
                 // if ((data.list[i].dt_txt.substring(8, 10)) == dd + 1) {
-                    // console.log(data.list[i].main.temp_max)
-                    if (data.list[i].main.temp_max > maxTempDay1) {
-                        maxTempDay1 = data.list[i].main.temp_max;
-                        document.getElementById("weatherIcon1").src = (`https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png`);
-                        // console.log(i)
-                    }
+                // console.log(data.list[i].main.temp_max)
+                if (data.list[i].main.temp_max > maxTempDay1) {
+                    maxTempDay1 = data.list[i].main.temp_max;
+                    document.getElementById("weatherIcon1").src = (`https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png`);
+                    // console.log(i)
+                }
                 // }
             }
             // console.log("Max temp for " + (daysDigit(dayOfWeek + 1)) + " is " + maxTempDay1)
-            Day1Max.textContent = "H: " + Math.round(maxTempDay1)+ "°F";
-           
+            Day1Max.textContent = "H: " + Math.round(maxTempDay1) + "°F";
+
 
             let minTempDay1 = 500;
             for (let i = 0; i < 8; i++) {
                 // minTempDay1= data.list[i].main.temp_min ; 
                 // if ((data.list[i].dt_txt.substring(8, 10)) == dd + 1) {
-                    // console.log(data.list[i].main.temp_max)
-                    if (data.list[i].main.temp_min < minTempDay1) {
-                        minTempDay1 = data.list[i].main.temp_min;
-                        // console.log(i)
+                // console.log(data.list[i].main.temp_max)
+                if (data.list[i].main.temp_min < minTempDay1) {
+                    minTempDay1 = data.list[i].main.temp_min;
+                    // console.log(i)
                     // }
                 }
             }
             // console.log("Min temp for " + (daysDigit(dayOfWeek + 1)) + " is " + (Math.round((minTempDay1 - 273.15) * (9 / 5) + 32)))
-            Day1Min.textContent = "L: " + Math.round(minTempDay1)+ "°F";
-           
+            Day1Min.textContent = "L: " + Math.round(minTempDay1) + "°F";
+
 
 
             let maxTempDay2 = 0;
@@ -227,7 +228,7 @@ function ApiCall5DaysForcast(lat, lon) {
                 }
             }
             // console.log("Max temp for " + (daysDigit(dayOfWeek + 2)) + " is " + (Math.round((maxTempDay2 - 273.15) * (9 / 5) + 32)))
-            Day2Max.textContent = "H: " + Math.round(maxTempDay2)+ "°F"
+            Day2Max.textContent = "H: " + Math.round(maxTempDay2) + "°F"
 
             let minTempDay2 = 500;
             for (let i = 8; i < 16; i++) {
@@ -241,7 +242,7 @@ function ApiCall5DaysForcast(lat, lon) {
                 }
             }
             // console.log("Min temp for " + (daysDigit(dayOfWeek + 2)) + " is " + (Math.round((minTempDay2 - 273.15) * (9 / 5) + 32)))
-            Day2Min.textContent = ("L: " + Math.round(minTempDay2)+ "°F")
+            Day2Min.textContent = ("L: " + Math.round(minTempDay2) + "°F")
 
 
 
@@ -257,7 +258,7 @@ function ApiCall5DaysForcast(lat, lon) {
                     }
                 }
             }
-            Day3Max.textContent = ("H: " + Math.round(maxTempDay3)+ "°F")
+            Day3Max.textContent = ("H: " + Math.round(maxTempDay3) + "°F")
 
             let minTempDay3 = 500;
             for (let i = 16; i < 24; i++) {
@@ -270,7 +271,7 @@ function ApiCall5DaysForcast(lat, lon) {
                     }
                 }
             }
-            Day3Min.textContent = ("L: " + Math.round(minTempDay3)+ "°F")
+            Day3Min.textContent = ("L: " + Math.round(minTempDay3) + "°F")
 
 
 
@@ -286,7 +287,7 @@ function ApiCall5DaysForcast(lat, lon) {
                     }
                 }
             }
-            Day4Max.textContent = "H: " + Math.round(maxTempDay4)+ "°F"
+            Day4Max.textContent = "H: " + Math.round(maxTempDay4) + "°F"
 
             let minTempDay4 = 500;
             for (let i = 24; i < 32; i++) {
@@ -300,7 +301,7 @@ function ApiCall5DaysForcast(lat, lon) {
                     }
                 }
             }
-            Day4Min.textContent = ("L: " + Math.round(minTempDay4)+ "°F")
+            Day4Min.textContent = ("L: " + Math.round(minTempDay4) + "°F")
 
 
             let maxTempDay5 = 0;
@@ -315,7 +316,7 @@ function ApiCall5DaysForcast(lat, lon) {
                     }
                 }
             }
-            Day5Max.textContent = ("H: " + Math.round(maxTempDay5)+ "°F")
+            Day5Max.textContent = ("H: " + Math.round(maxTempDay5) + "°F")
 
             let minTempDay5 = 500;
             for (let i = 32; i < 40; i++) {
@@ -332,9 +333,9 @@ function ApiCall5DaysForcast(lat, lon) {
                 }
             }
             // console.log("Min temp for " + (daysDigit(dayOfWeek + 5)) + " is " + minTempDay5)
-            Day5Min.textContent = ("L: " + Math.round(minTempDay5)+ "°F")
+            Day5Min.textContent = ("L: " + Math.round(minTempDay5) + "°F")
         })
-} 
+}
 
 
 
@@ -352,23 +353,23 @@ const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Fri
 const todayDayOfWeek = daysOfWeek[today.getDay()];
 
 // console.log("Today's day of the week:", todayDayOfWeek);
- const futureDate = new Date(today);
+const futureDate = new Date(today);
 for (let i = 1; i <= 5; i++) {
- 
+
     futureDate.setDate(today.getDate() + i);
     // console.log(futureDate.setDate(today.getDate() + i))
-    
-  const futureDayOfWeek = daysOfWeek[futureDate.getDay()];
+
+    const futureDayOfWeek = daysOfWeek[futureDate.getDay()];
     // console.log(`Day ${i} from today is:`, futureDayOfWeek);
     if (i === 1) {
         dayName1.textContent = futureDayOfWeek
     } else if (i === 2) {
         dayName2.textContent = futureDayOfWeek
-    }else if (i === 3) {
+    } else if (i === 3) {
         dayName3.textContent = futureDayOfWeek
-    }else if (i === 4) {
+    } else if (i === 4) {
         dayName4.textContent = futureDayOfWeek
-    }else if (i === 5) {
+    } else if (i === 5) {
         dayName5.textContent = futureDayOfWeek
     }
 }
@@ -384,9 +385,9 @@ for (let i = 1; i <= 5; i++) {
 
 // function ApiCall5DaysForcast2(lat, lon) {
 
-    
+
 //     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`)
-        
+
 
 //         .then((response) => {
 //             return response.json()
@@ -401,7 +402,7 @@ for (let i = 1; i <= 5; i++) {
 //             // for (let i = 0; i < data.list.length; i++){
 //             //     console.log(data.list.length + " this is how many list items we have")
 //             // }
-            
+
 
 
 
@@ -430,42 +431,58 @@ main22.textContent = daysDigit(dayOfWeek)
 // dayName4.textContent = daysDigit(dayOfWeek + 4)
 // dayName5.textContent = daysDigit(dayOfWeek + 5)
 // ApiCall5DaysForcast();
+// Global variable for the current city
+let currentCity = "";
+
 function ApiCallLocation(lat, lon) {
-
     fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&appid=${apiKey}`)
-
-        .then((response) => {
-            return response.json()
-        })
-        .then((data) => {
-            console.log(data[0].name)
-            console.log(data[0].state)
-            city.textContent = data[0].name + " " + data[0].state
+        .then(response => response.json())
+        .then(data => {
+            console.log(data[0].name);
+            console.log(data[0].state);
+            city.textContent = data[0].name + " " + data[0].state;
             searchBtn.placeholder = data[0].name;
-            
-
-           document.getElementById('saveFav').addEventListener('click', function () {
-    
-    let searchCity = data[0].name;
-    let listCity = document.createElement('li');
-               listCity.textContent = searchCity;
-               if (searchCity !== "") {
-                   document.getElementById('favorites').appendChild(listCity)
-                
-                   data[0].name = "";
-                   let deleteFav = document.createElement('button');
-                   deleteFav.textContent = 'Delete';
-                   deleteFav.addEventListener('click', function () {
-                       listCity.remove()
-                   });
-                   listCity.appendChild(deleteFav)
-                    
-                
-            
-               }
-               
-})
-        })
+            currentCity = data[0].name;  // Update current city
+        });
 }
 
+// Retrieve favorite cities from local storage or initialize an empty array
+let favoriteCities = JSON.parse(localStorage.getItem('favoriteCities')) || [];
+
+// Event listener for the 'saveFav' button
+document.getElementById('saveFav').addEventListener('click', function () {
+    if (!isCityInFavorites(currentCity)) {
+        favoriteCities.push(currentCity);
+        localStorage.setItem('favoriteCities', JSON.stringify(favoriteCities));
+        updateFavoritesList();
+    }
+});
+
+// Function to check if the city is already in the favorites list
+function isCityInFavorites(city) {
+    return favoriteCities.includes(city);
+}
+
+// Function to update the favorites list
+function updateFavoritesList() {
+    let favoritesList = document.getElementById('favorites');
+    favoritesList.innerHTML = "";
+    favoriteCities.forEach(city => {
+        let listCity = document.createElement('li');
+        listCity.textContent = city;
+        let deleteFav = document.createElement('button');
+        deleteFav.textContent = 'Delete';
+        deleteFav.addEventListener('click', function (event) {
+            event.stopPropagation();
+            favoriteCities = favoriteCities.filter(item => item !== city);
+            localStorage.setItem('favoriteCities', JSON.stringify(favoriteCities));
+            updateFavoritesList();
+        });
+        listCity.appendChild(deleteFav);
+        favoritesList.appendChild(listCity);
+    });
+}
+
+// Call this at the beginning to populate the favorites list initially
+updateFavoritesList();
 
