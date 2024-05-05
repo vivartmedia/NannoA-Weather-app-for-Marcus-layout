@@ -1,3 +1,26 @@
+You are to build out a weather app prototype for this week.
+
+The weather app will be made where you are able to do the following:
+
+Be able to search for a location to get the weather for
+
+Add that city to a list of favorites
+
+On each search, I need the ability to see the following (how you achieve this is up to you)
+
+Current weather at the time I do the search
+
+A general 5 day forecast
+
+The ability to see max temp and min temp of the current day.
+
+Desktop only build
+
+Must be designed
+
+Must pull api from https://openweathermap.org/
+
+
 // Ashur Nanno 
 
  // Date Revised: 12/08/2023 
